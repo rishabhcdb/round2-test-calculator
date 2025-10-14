@@ -1,4 +1,4 @@
-# Create a simple calculator with +, -, ×, ÷
+# Add a memory (M+, M-, MR, MC) feature to the calculator
 
 
         ## Description
