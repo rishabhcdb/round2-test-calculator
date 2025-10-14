@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .display {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 1.2rem;
+        }
+
+        .btn-equal {
+            width: 115px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="form-control display" id="display" readonly>
+        <div class="buttons">
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="clearDisplay()">C</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="backspace()">&#9003;</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="appendToDisplay('/')">/</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="appendToDisplay('*')">×</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('7')">7</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('8')">8</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('9')">9</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="appendToDisplay('-')">-</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('4')">4</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('5')">5</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('6')">6</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light" onclick="appendToDisplay('+')">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('1')">1</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('2')">2</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('3')">3</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-success btn-equal" onclick="calculate()">=</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('0')">0</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" onclick="appendToDisplay('.')">.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        function backspace() {
+            display.value = display.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
